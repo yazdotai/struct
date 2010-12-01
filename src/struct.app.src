@@ -1,0 +1,12 @@
+{application, struct,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { struct_app, []}},
+  {env, []}
+ ]}.
