@@ -1,0 +1,29 @@
+This is the struct module developed by Beebole and showcased in their blog post.
+
+http://beebole.com/en/blog/erlang/tutorial-web-application-erlang/
+
+The module itself is unchanged.  All credit goes to the bright Beebole guys.
+
+All that has been done is to make the module more accessible (as it deserves to be) with github than buried in a zip.
+
+The module itself has been rebared.  So you can download directly into your erlang library folder and run from any instance of erlang.
+
+The really neat thing about the struct module (as opposed to just using the functions in proplists) is that it creates new lists when you set or delete values.  And it can access nested values in a relatively straightforward manner.
+
+Here is the doc example :
+
+  S = {struct, [
+                      {<<"name">>, <<"Foo">>},
+                      {<<"activity">>, {struct, [
+                              {<<"name">>, <<"Basketball">>},
+                              {<<"duration">>, 60},
+                              {<<"intensity">>, 10}]}}]}
+
+  get_value(<<"name">>, S)
+  get_value({<<"activity">>, <<"duration">>}, S)
+  set_value(<<"lastName">>, <<"Bar">>, S)
+  set_value({<<"activity">>, <<"duration">>}, 75, S)
+  delete(<<"name">>, S)
+  delete({<<"activity">>, <<"duration">>}, S)
+
+  
