@@ -14,11 +14,12 @@
 %%  set_value(<<"lastName">>, <<"Bar">>, S)
 %%  set_value({<<"activity">>, <<"duration">>}, 75, S)
 %%  delete(<<"name">>, S)
-%%  delete({<<"activity">>, <<"duration">>}, S)  
+%%  delete({<<"activity">>, <<"duration">>}, S) 
+%%  get_keys(S) 
 
 -module(struct).
 
--export([extend/2, withdraw/2, get_value/2, set_value/3, delete/2]).
+-export([extend/2, withdraw/2, get_value/2, set_value/3, delete/2, get_keys/1]).
 
 
 %% @type key() = binary()
@@ -110,6 +111,10 @@ get_val([Key], Struct) ->
 get_val([Key | T], Struct) ->
 	NewStruct = get_value(Key, Struct),
 	get_val(T, NewStruct).
+
+get_keys(Struct) ->
+    {struct, L} = Struct,
+    proplists:get_keys(L).
 
 
 %% @spec set_value(path() | key(), value(),struct()) -> struct()
